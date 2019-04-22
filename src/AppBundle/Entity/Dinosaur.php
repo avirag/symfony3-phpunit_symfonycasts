@@ -62,4 +62,13 @@ class Dinosaur
             $this->length
         );
     }
+
+    /**
+     * @return mixed
+     */
+    public function getGenus()
+    {
+        return $this->genus;
+    }
+
 }
