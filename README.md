@@ -67,15 +67,20 @@ alias phpunit=./vendor/bin/phpunit
 
 From now on you will be able to run local PHPUnit from your project directory by executing `phpunit` command. Add alias command to your bash profile if you don't want to run it every time you enter a new terminal.
 
-## Have Ideas, Feedback or an Issue?
+## 3 types of tests
+**UNIT TEST**
 
-If you have suggestions or questions, please feel free to
-open an issue on this repository or comment on the course
-itself. We're watching both :).
+Test one specific function on a class. Fake any needed database connection!
 
-## Thanks!
+**INTEGRATION TEST**
 
-And as always, thanks so much for your support and letting
-us do what we love!
+Just like a unit test. Except it uses the real database connection!
 
-<3 Your friends at KnpUniversity
+**FUNCTIONAL TEST**
+
+Write a test to programmatically command a browser.
+
+## TDD
+* test
+* code
+* refactor
