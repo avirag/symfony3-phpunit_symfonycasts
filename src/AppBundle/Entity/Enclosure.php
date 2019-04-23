@@ -4,6 +4,7 @@
 namespace AppBundle\Entity;
 
 
+use AppBundle\Exception\DinosaurAreRunningRampantException;
 use AppBundle\Exception\NotABuffetException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -22,11 +23,22 @@ class Enclosure
     private $dinosaurs;
 
     /**
+     * @var Collection|Security[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Security", mappedBy="enclosure", cascade={"persist"})
+     */
+    private $securities;
+
+    /**
      * Enclosure constructor.
      */
-    public function __construct()
+    public function __construct(bool $withBasicSecurity = false)
     {
         $this->dinosaurs = new ArrayCollection();
+        $this->securities = new ArrayCollection();
+
+        if($withBasicSecurity) {
+            $this->addSecurity(new Security('Fence', true, $this));
+        }
     }
 
     /**
@@ -43,7 +55,30 @@ class Enclosure
             throw new NotABuffetException();
         }
 
+        if(!$this->isSecurityActive()) {
+            throw new DinosaurAreRunningRampantException('Are you craaazy!!??');
+        }
+
         $this->dinosaurs[] = $dinosaur;
+    }
+
+    /**
+     * @param Security $security
+     */
+    public function addSecurity(Security $security)
+    {
+        $this->securities[] = $security;
+    }
+
+    public function isSecurityActive(): bool
+    {
+        foreach ($this->securities as $security) {
+            if($security->getIsActive()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function canAddDinosaur(Dinosaur $dinosaur): bool

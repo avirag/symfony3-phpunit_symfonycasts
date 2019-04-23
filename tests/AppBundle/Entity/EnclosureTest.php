@@ -3,6 +3,7 @@
 namespace Tests\AppBundle\Entity;
 
 use AppBundle\Entity\Dinosaur;
+use AppBundle\Exception\DinosaurAreRunningRampantException;
 use AppBundle\Exception\NotABuffetException;
 use PHPUnit\Framework\TestCase;
 use AppBundle\Entity\Enclosure;
@@ -18,7 +19,7 @@ class EnclosureTest extends TestCase
 
     public function testItAddsDinosaurs()
     {
-        $enclosure = new Enclosure();
+        $enclosure = new Enclosure(true);
 
         $enclosure->addDinosaur(new Dinosaur());
         $enclosure->addDinosaur(new Dinosaur());
@@ -28,7 +29,7 @@ class EnclosureTest extends TestCase
 
     public function testItDoesNotAllowMixDinosaurs()
     {
-        $enclosure = new Enclosure();
+        $enclosure = new Enclosure(true);
         $enclosure->addDinosaur(new Dinosaur());
 
         $this->expectException(NotABuffetException::class);
@@ -41,8 +42,18 @@ class EnclosureTest extends TestCase
      */
     public function testItDoesNotAllowToAddNon()
     {
-        $enclosure = new Enclosure();
+        $enclosure = new Enclosure(true);
         $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
+        $enclosure->addDinosaur(new Dinosaur());
+    }
+
+    public function testItDoesNotAllowToAddDinosaursToUnsecureEnclosure()
+    {
+        $enclosure = new Enclosure();
+
+        $this->expectException(DinosaurAreRunningRampantException::class);
+        $this->expectExceptionMessage('Are you craaazy!!??');
+
         $enclosure->addDinosaur(new Dinosaur());
     }
 }
