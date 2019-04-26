@@ -17,6 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Enclosure
 {
     /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @var Collection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
      */
@@ -59,9 +66,9 @@ class Enclosure
 
     public function addDinosaur(Dinosaur $dinosaur)
     {
-        if(!$this->canAddDinosaur($dinosaur)) {
-            throw new NotABuffetException();
-        }
+//        if(!$this->canAddDinosaur($dinosaur)) {
+//            throw new NotABuffetException();
+//        }
 
         if(!$this->isSecurityActive()) {
             throw new DinosaurAreRunningRampantException('Are you craaazy!!??');
