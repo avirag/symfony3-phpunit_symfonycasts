@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ec1d32f49eceeb5f21ef24834456ad9",
+    "content-hash": "60b4e7b88ef2b0c1dc89d92111d5b277",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2377,6 +2377,68 @@
                 "database"
             ],
             "time": "2016-09-20T10:07:57+00:00"
+        },
+        {
+            "name": "doctrine/doctrine-fixtures-bundle",
+            "version": "3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
+                "reference": "0438f8dd0a21bc5325c6be3ae0a09131815e10d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/0438f8dd0a21bc5325c6be3ae0a09131815e10d4",
+                "reference": "0438f8dd0a21bc5325c6be3ae0a09131815e10d4",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/data-fixtures": "~1.0",
+                "doctrine/doctrine-bundle": "~1.0",
+                "php": ">=5.5.9|^7.0",
+                "symfony/doctrine-bridge": "~2.7|~3.0|~4.0",
+                "symfony/framework-bundle": "^3.3|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^7.4",
+                "symfony/phpunit-bridge": "^3.4 || ^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Bundle\\FixturesBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Doctrine Project",
+                    "homepage": "http://www.doctrine-project.org"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony DoctrineFixturesBundle",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "Fixture",
+                "persistence"
+            ],
+            "time": "2018-11-26T19:40:34+00:00"
         },
         {
             "name": "liip/functional-test-bundle",
