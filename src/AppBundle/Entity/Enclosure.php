@@ -49,6 +49,14 @@ class Enclosure
     }
 
     /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
      * @return Collection
      */
     public function getDinosaurs(): Collection
@@ -100,5 +108,10 @@ class Enclosure
     {
         return count($this->dinosaurs) === 0
             || $this->dinosaurs->first()->isCarnivorous() === $dinosaur->isCarnivorous();
+    }
+
+    public function getDinosaurCount(): int
+    {
+        return $this->dinosaurs->count();
     }
 }
